@@ -55,7 +55,7 @@ class Container implements ContainerInterface
      * @var array
      * 
      */
-    protected $defs = [];
+    protected $defs = array();
 
     /**
      * 
@@ -64,7 +64,7 @@ class Container implements ContainerInterface
      * @var array
      * 
      */
-    protected $services = [];
+    protected $services = array();
 
     /**
      * 
@@ -128,7 +128,7 @@ class Container implements ContainerInterface
      */
     public function __clone()
     {
-        $this->services = [];
+        $this->services = array();
         $this->forge = clone $this->forge;
     }
 
@@ -343,7 +343,7 @@ class Container implements ContainerInterface
      * @return object An instance of the requested class.
      * 
      */
-    public function newInstance($class, array $params = [], array $setters = [])
+    public function newInstance($class, array $params = array(), array $setters = array())
     {
         return $this->forge->newInstance($class, $params, $setters);
     }
@@ -370,7 +370,7 @@ class Container implements ContainerInterface
      * @return Lazy A lazy-load object that creates the new instance.
      * 
      */
-    public function lazyNew($class, array $params = [], array $setters = [])
+    public function lazyNew($class, array $params = array(), array $setters = array())
     {
         $forge = $this->getForge();
         return $this->lazy(
@@ -467,7 +467,7 @@ class Container implements ContainerInterface
     // creating it one time like the lazyNew() or newInstance() methods).
     // we don't want this to be a Lazy because we don't want the Forge to
     // recognize and invoke it when passed as a param or setter value.
-    public function newFactory($class, array $params = [], array $setters = [])
+    public function newFactory($class, array $params = array(), array $setters = array())
     {
         return new Factory($this->forge, $class, $params, $setters);
     }

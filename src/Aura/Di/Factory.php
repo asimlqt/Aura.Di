@@ -30,8 +30,8 @@ class Factory
     public function __construct(
         ForgeInterface $forge,
         $class,
-        array $params = [],
-        array $setter = []
+        array $params = array(),
+        array $setter = array()
     ) {
         $this->forge = $forge;
         $this->class = $class;
